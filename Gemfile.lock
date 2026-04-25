@@ -1,0 +1,27 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  capybara
+  debug
+  importmap-rails
+  jbuilder
+  puma (>= 5.0)
+  rails (~> 7.1.0)
+  rubocop
+  rubocop-rails
+  selenium-webdriver
+  sprockets-rails
+  sqlite3 (~> 1.4)
+  stimulus-rails
+  tailwindcss-rails
+  turbo-rails
+  web-console
+
+BUNDLED WITH
+   2.5.23
