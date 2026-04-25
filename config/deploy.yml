@@ -1,0 +1,38 @@
+# Kamal deployment template for DigitalOcean.
+# Replace every <PLACEHOLDER> value before deploying. Do not commit real secrets.
+
+service: <APP_NAME>
+image: <DO_REGISTRY_IMAGE_NAME>
+
+servers:
+  web:
+    - <DROPLET_IP>
+
+proxy:
+  ssl: true
+  host: <APP_HOSTNAME>
+
+registry:
+  server: registry.digitalocean.com
+  username: <DO_REGISTRY_USERNAME>
+  password: <DO_REGISTRY_PASSWORD>
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_SERVE_STATIC_FILES: true
+  # Keep the actual Rails secret value out of source control.
+  # Replace this placeholder locally with the production master key: <RAILS_MASTER_KEY>
+  secret:
+    - RAILS_MASTER_KEY
+
+ssh:
+  user: <SSH_USER>
+
+builder:
+  arch: amd64
+
+volumes:
+  - "<APP_NAME>_storage:/rails/storage"
+
+asset_path: /rails/public/assets
