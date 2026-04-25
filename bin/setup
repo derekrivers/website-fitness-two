@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+def system!(*args)
+  system(*args) || abort("Command failed: #{args.join(' ')}")
+end
+
+APP_ROOT = File.expand_path("..", __dir__)
+Dir.chdir APP_ROOT do
+  system! "bundle check || bundle install"
+  system! "bin/rails db:prepare"
+  system! "bin/rails tailwindcss:build"
+end
