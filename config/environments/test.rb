@@ -1,10 +1,12 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   config.enable_reloading = false
-  config.eager_load = ENV["CI"].present?
+  config.eager_load = ENV['CI'].present?
   config.public_file_server.enabled = true
-  config.public_file_server.headers = { "Cache-Control" => "public, max-age=#{1.hour.to_i}" }
+  config.public_file_server.headers = { 'Cache-Control' => "public, max-age=#{1.hour.to_i}" }
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
